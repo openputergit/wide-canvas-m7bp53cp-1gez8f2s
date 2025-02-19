@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        @keyframes fillProgress {
+            from { stroke-dasharray: 0 283; }
+            to { stroke-dasharray: 195 283; }
+        }
+        
+        .progress-ring-circle {
+            animation: fillProgress 1s ease-out forwards;
+        }
+        
+        .bottom-nav-item.active {
+            color: #22c55e;
+        }
+        
+        .notification {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="max-w-md mx-auto p-4">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gray-700 rounded-full"></div>
+                <button class="bg-gray-800 text-sm px-3 py-1 rounded-full">Become PRO</button>
+            </div>
+            <div class="flex gap-4">
+                <i class="bi bi-gift text-green-500 text-xl"></i>
+                <i class="bi bi-bell text-gray-400 text-xl"></i>
+            </div>
+        </div>
+
+        <!-- Progress Circle -->
+        <div class="relative w-64 h-64 mx-auto mb-8">
+            <svg class="progress-ring w-full h-full" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#1a1a1a"/>
+                <circle cx="50" cy="50" r="45" 
+                    stroke="#2f2f2f"
+                    stroke-width="8"
+                    fill="transparent"/>
+                <circle class="progress-ring-circle" cx="50" cy="50" r="45"
+                    stroke="#22c55e"
+                    stroke-width="8"
+                    fill="transparent"
+                    stroke-dasharray="195 283"
+                    stroke-linecap="round"/>
+            </svg>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                <div class="text-4xl font-bold">3,442</div>
+                <div class="text-gray-400 text-sm">of 5,000 steps</div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex justify-between mb-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold">2.5</div>
+                <div class="text-gray-400 text-sm">km</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl font-bold">3.44</div>
+                <div class="text-gray-400 text-sm">coins</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl font-bold">126</div>
+                <div class="text-gray-400 text-sm">Cal</div>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div class="notification bg-gray-800 rounded-lg p-4 mb-4">
+            <div class="flex justify-between items-start">
+                <div class="flex gap-3">
+                    <i class="bi bi-star-fill text-green-500"></i>
+                    <div>
+                        <div class="font-medium">Great going Niraj!</div>
+                        <div class="text-sm text-gray-400">Reach 5 coins, today and tomorrow, to upgrade to Level 3</div>
+                    </div>
+                </div>
+                <button class="text-gray-400"><i class="bi bi-x-lg"></i></button>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-3 gap-4 mb-8">
+            <button class="bg-gray-800 rounded-lg p-3 text-left">
+                <div class="text-green-500 text-sm">On</div>
+                <div class="font-medium">Level 2</div>
+            </button>
+            <button class="bg-gray-800 rounded-lg p-3 text-left">
+                <div class="text-gray-400 text-sm">1/5</div>
+                <div class="font-medium">Daily Rewards</div>
+            </button>
+            <button class="bg-gray-800 rounded-lg p-3 text-left">
+                <div class="text-gray-400 text-sm">0/3</div>
+                <div class="font-medium">Extend Daily Limit</div>
+            </button>
+        </div>
+
+        <!-- Challenges Section -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-medium">Challenges</h2>
+            <button class="text-green-500 flex items-center gap-1">
+                View All
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-gray-800 p-4">
+            <div class="max-w-md mx-auto flex justify-between items-center">
+                <button class="bottom-nav-item active flex flex-col items-center">
+                    <i class="bi bi-house text-xl"></i>
+                    <span class="text-xs">Home</span>
+                </button>
+                <button class="bottom-nav-item text-gray-400 flex flex-col items-center">
+                    <i class="bi bi-calendar2 text-xl"></i>
+                    <span class="text-xs">Plans</span>
+                </button>
+                <button class="bottom-nav-item bg-white text-black p-3 rounded-xl -mt-8">
+                    <i class="bi bi-person-walking text-xl"></i>
+                </button>
+                <button class="bottom-nav-item text-gray-400 flex flex-col items-center">
+                    <i class="bi bi-people text-xl"></i>
+                    <span class="text-xs">Friends</span>
+                </button>
+                <button class="bottom-nav-item text-gray-400 flex flex-col items-center">
+                    <i class="bi bi-trophy text-xl"></i>
+                    <span class="text-xs">Challenges</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // Handle notification close
+        document.querySelector('.notification button').addEventListener('click', function() {
+            this.closest('.notification').style.display = 'none';
+        });
+
+        // Handle bottom navigation
+        document.querySelectorAll('.bottom-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.bottom-nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                    nav.classList.add('text-gray-400');
+                });
+                if (!this.classList.contains('bg-white')) {
+                    this.classList.add('active');
+                    this.classList.remove('text-gray-400');
+                }
+            });
+        });
+
+        // Simulate step counter updates
+        let steps = 3442;
+        const maxSteps = 5000;
+        setInterval(() => {
+            steps = Math.min(steps + Math.floor(Math.random() * 10), maxSteps);
+            document.querySelector('.text-4xl').textContent = steps.toLocaleString();
+            const progress = (steps / maxSteps) * 283;
+            document.querySelector('.progress-ring-circle').style.strokeDasharray = `${progress} 283`;
+        }, 3000);
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
